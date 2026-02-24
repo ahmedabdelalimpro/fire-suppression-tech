@@ -76,7 +76,6 @@
             margin: 10px auto;
         }
 
-        /* شبكة المشاريع */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -102,16 +101,14 @@
 
         .project-content h3 { color: var(--navy-blue); margin-top: 0; }
 
-        /* قسم تفاصيل التطبيق (الذي يفتح عند الضغط) */
         .app-details-section {
-            display: none; /* مخفي افتراضياً ويظهر عند الحاجة */
+            display: none;
             background: #fff;
             padding: 40px 5%;
             border-top: 2px solid #eee;
             animation: fadeIn 0.5s ease;
         }
 
-        /* لفتح القسم عند الضغط على الرابط */
         .app-details-section:target { display: block; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -207,10 +204,6 @@
     <div id="smart-gas-details" class="app-details-section">
         <div class="container" style="padding: 20px 0;">
             <h2 class="section-title">تفاصيل تطبيق المصمم الهندسي</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-                استعرض شاشات التطبيق وكيفية توليد المخططات الهندسية والتقارير الاحترافية.
-            </p>
-
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="image_5.png" alt="شاشة الإدخال">
@@ -231,7 +224,7 @@
             </div>
 
             <div style="text-align: center;">
-                <a href="#" class="btn-action">تحميل ملف APK الآن</a>
+                <a href="https://drive.google.com/uc?export=download&id=183sqWBBn3mPzQzGnJqXZZ6g81NDN9bXb" class="btn-action">تحميل ملف APK الآن</a>
                 <a href="#apps" class="btn-action btn-outline">إغلاق التفاصيل</a>
             </div>
         </div>
