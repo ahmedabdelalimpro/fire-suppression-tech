@@ -3,567 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>م. أحمد عبد العليم | حلول هندسية ذكية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>م. أحمد عبد العليم | المستشار الرقمي لأنظمة الحريق</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- متغيرات الألوان والتصميم الجديد --- */
         :root {
-            --primary-blue: #0a2351; /* أزرق كحلي عميق */
-            --accent-red: #d32f2f;    /* أحمر هندسي قوي */
-            --bg-light: #f8fafd;      /* خلفية فاتحة مريحة للعين */
-            --text-dark: #1a1a1a;
-            --text-gray: #555b6e;
-            --card-shadow: 0 15px 35px rgba(0,0,0,0.08); /* ظل ناعم احترافي */
-            --transition-smooth: all 0.4s ease;
+            --primary: #0f172a; /* Deep Slate */
+            --accent: #ef4444;  /* Fire Red */
+            --glass: rgba(255, 255, 255, 0.03);
+            --text-light: #f8fafc;
+            --gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
         body {
             font-family: 'Cairo', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.7;
-            scroll-behavior: smooth;
+            background-color: #020617;
+            color: var(--text-light);
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* --- تصميم الهيدر الجديد --- */
+        /* --- تأثير الخلفية المتحركة --- */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px); /* تأثير الزجاج */
-            padding: 1rem 8%;
+            padding: 1.5rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.6rem;
-            color: var(--primary-blue);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i { color: var(--accent-red); }
+        .logo { font-weight: 900; font-size: 1.8rem; letter-spacing: -1px; }
+        .logo span { color: var(--accent); }
 
         nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            margin-right: 25px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            transition: var(--transition-smooth);
-            position: relative;
+            color: var(--text-light); text-decoration: none;
+            margin-right: 2rem; font-weight: 600; font-size: 0.95rem;
+            transition: 0.3s; opacity: 0.7;
         }
+        nav a:hover { opacity: 1; color: var(--accent); }
 
-        nav a:hover { color: var(--primary-blue); }
-        
-        /* خط تحت الروابط عند التحويم */
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 3px;
-            background: var(--accent-red);
-            transition: var(--transition-smooth);
-        }
-        nav a:hover::after { width: 100%; }
-
-        /* --- قسم الافتتاحية (Hero Section) الاحترافي --- */
+        /* --- Hero Section --- */
         .hero {
-            padding: 120px 8% 80px;
+            height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+            padding: 0 8%;
             position: relative;
-            overflow: hidden;
         }
 
-        /* خلفية زخرفية خفيفة */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -20%;
-            width: 70%;
-            height: 70%;
-            background: linear-gradient(to right, rgba(10, 35, 81, 0.05), rgba(211, 47, 47, 0.05));
-            border-radius: 50%;
-            z-index: 0;
+        .hero-text { flex: 1; z-index: 10; }
+        .hero-text h1 { font-size: 4.5rem; line-height: 1; margin: 0; font-weight: 900; }
+        .hero-text p { font-size: 1.4rem; color: #94a3b8; max-width: 600px; margin: 2rem 0; }
+
+        .btn-main {
+            background: var(--accent);
+            color: white; padding: 1.2rem 2.5rem;
+            border-radius: 12px; font-weight: 800;
+            text-decoration: none; display: inline-block;
+            transition: 0.4s; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.2);
         }
+        .btn-main:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(239, 68, 68, 0.3); }
 
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(211, 47, 47, 0.1);
-            color: var(--accent-red);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
-            font-weight: 800;
-        }
-
-        .hero h1 span { color: var(--accent-red); }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* وضع أيقونة التطبيق في إطار فخم */
-        .hero-img-frame {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            background: white;
-            border-radius: 40px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-            padding: 20px;
-            transform: rotate(-5deg);
-            transition: var(--transition-smooth);
-        }
-
-        .hero-img-frame:hover { transform: rotate(0deg) scale(1.02); }
-
-        .hero-img-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 30px;
-        }
-
-        /* --- العناوين الرئيسية للأقسام --- */
-        .container { padding: 100px 8%; }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary-blue);
-            font-weight: 800;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60%;
-            height: 5px;
-            background: var(--accent-red);
-            margin: 15px auto 0;
-            border-radius: 10px;
-        }
-
-        /* --- قسم "عني" --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text p {
-            font-size: 1.15rem;
-            color: var(--text-gray);
-            margin-bottom: 20px;
-        }
-
-        .highlight-box {
-            background: white;
-            padding: 25px;
-            border-right: 5px solid var(--accent-red);
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-            font-weight: 600;
-            color: var(--primary-blue);
-        }
-
-        /* --- شبكة المشاريع (المطورة) --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition-smooth);
-            border: none;
-            position: relative;
-            top: 0;
-        }
-
-        .project-card:hover {
-            top: -15px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
-        .project-img-wrapper {
-            height: 240px;
-            background: linear-gradient(45deg, #f0f4f8, #e1e8ed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .project-img {
-            max-height: 100%;
-            max-width: 100%;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
-        }
-
-        .project-content { padding: 35px; text-align: center; }
-
-        .project-content h3 {
-            font-size: 1.6rem;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .project-tags {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .tag {
-            background: #eee;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-gray);
-        }
-
-        /* --- الأزرار الاحترافية --- */
-        .btn-action {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-blue), var(--accent-red));
-            color: white;
-            padding: 14px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 20px -5px rgba(10, 35, 81, 0.4);
-            transition: var(--transition-smooth);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-action:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(211, 47, 47, 0.5);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-dark);
-            border: 2px solid #ddd;
-        }
-        .btn-outline:hover {
-            border-color: var(--accent-red);
-            color: var(--accent-red);
-        }
-
-        /* --- قسم تفاصيل التطبيق (المنبثق) --- */
-        .app-details-section {
-            max-height: 0; /* مخفي افتراضياً */
-            overflow: hidden;
-            background: white;
-            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* حركة انسيابية جداً */
-            opacity: 0;
-        }
-
-        /* عند الضغط على الرابط */
-        .app-details-section:target {
-            max-height: 2000px; /* ارتفاع كافٍ للمحتوى */
-            opacity: 1;
-            padding: 80px 8%;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-        }
-
-        .gallery-grid {
+        /* --- Stats Section --- */
+        .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
+            gap: 2rem; padding: 4rem 8%;
+            background: rgba(255,255,255,0.02);
         }
+        .stat-item { text-align: center; }
+        .stat-item h3 { font-size: 3rem; color: var(--accent); margin: 0; }
+        .stat-item p { color: #64748b; font-weight: 600; }
 
-        .gallery-item { text-align: center; }
+        /* --- Project Cards --- */
+        .section-padding { padding: 100px 8%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
         
-        .gallery-item img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            border: 4px solid white;
-            transition: var(--transition-smooth);
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px; padding: 2rem;
+            transition: 0.5s; cursor: pointer;
+            position: relative; overflow: hidden;
         }
-        .gallery-item img:hover { transform: scale(1.03); }
+        .card:hover { background: rgba(255,255,255,0.06); border-color: var(--accent); transform: translateY(-10px); }
 
-        .gallery-item p { margin-top: 15px; font-weight: 700; color: var(--primary-blue); }
-
-        /* --- قسم التواصل --- */
-        .contact-section { background: white; }
-
-        .contact-box {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+        .card-icon { font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem; }
+        .card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        
+        /* --- Engineering Logic (LaTeX Style) --- */
+        .logic-box {
+            background: #000; padding: 1.5rem;
+            border-radius: 12px; font-family: 'Courier New', monospace;
+            color: #10b981; font-size: 0.9rem; margin: 1rem 0;
         }
 
-        .info-card {
-            background: var(--bg-light);
-            padding: 40px 30px;
-            border-radius: 25px;
-            width: 300px;
-            text-align: center;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition-smooth);
-            border: 1px solid #eee;
-        }
-
-        .info-card:hover { transform: translateY(-10px); border-color: var(--accent-red); }
-
-        .info-card i {
-            font-size: 2.5rem;
-            color: var(--accent-red);
-            margin-bottom: 20px;
-        }
-
-        .info-card strong {
-            display: block;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--primary-blue);
-        }
-
-        /* --- الفوتر --- */
+        /* --- Footer --- */
         footer {
-            background-color: var(--primary-blue);
-            color: rgba(255,255,255,0.7);
-            padding: 60px 8%;
-            text-align: center;
+            padding: 5rem 8%; border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center; background: #020617;
         }
 
-        footer strong { color: white; font-size: 1.2rem; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- التجاوب مع الشاشات الصغيرة --- */
-        @media (max-width: 992px) {
-            .hero { flex-direction: column-reverse; text-align: center; padding-top: 80px; }
-            .hero-content { margin-top: 50px; }
-            .hero h1 { font-size: 2.8rem; }
-            .about-grid { grid-template-columns: 1fr; }
-            .hero-img-frame { width: 250px; height: 250px; }
-        }
         @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2.5rem; }
             header { padding: 1rem 5%; }
-            nav { display: none; /* يمكن إضافة قائمة منسدلة هنا مستقبلاً */ }
-            .section-title { font-size: 2rem; }
+            nav { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-glow"></div>
+
     <header>
-        <div class="logo">
-            <i class="fas fa-shield-alt"></i> م. أحمد عبد العليم
-        </div>
+        <div class="logo">أحمد<span>.عبدالعليم</span></div>
         <nav>
-            <a href="#about">عني</a>
-            <a href="#apps">المشاريع</a>
-            <a href="#contact">اتصل بي</a>
+            <a href="#about">الخبرة</a>
+            <a href="#apps">التطبيقات</a>
+            <a href="#contact">تواصل</a>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">مهندس أنظمة حريق & مطور Flutter</span>
-            <h1>أحول الخبرة الميدانية إلى <span>حلول برمجية ذكية</span></h1>
-            <p>مشرف إنذار وصيانة أجهزة إنذار الحريق. أدمج بين دقة الهندسة وقوة البرمجة لابتكار أدوات تسهل العمل في المواقع.</p>
-            <a href="#apps" class="btn-action">استعرض تطبيقاتي الهندسية</a>
-        </div>
-        <div class="hero-image">
-            <div class="hero-img-frame">
-                <img src="image_4.png" alt="م. أحمد عبد العليم">
-            </div>
+        <div class="hero-text reveal">
+            <h1>هندسة الحريق<br>بذكاء برمجـي</h1>
+            <p>مشرف أنظمة إنذار وصيانة. أحول خبرتي الميدانية في المواقع إلى أدوات رقمية تتحدث لغة الأكواد الهندسية.</p>
+            <a href="#apps" class="btn-main">استكشف الأدوات الهندسية</a>
         </div>
     </section>
 
-    <div class="container" id="about" style="background: white;">
-        <div class="section-header">
-            <h2 class="section-title">الخلفية المهنية والتقنية</h2>
+    <div class="stats">
+        <div class="stat-item reveal">
+            <h3>+100</h3>
+            <p>حسابات هيدروليكية دقيقة</p>
         </div>
-        <div class="about-grid">
-            <div class="hero-img-frame" style="transform: rotate(3deg); margin: 0 auto;">
-                 <img src="image_4.png" alt="عني">
-            </div>
-            <div class="about-text">
-                <p>
-                    مهندس متخصص ومشرف بخبرة ميدانية واسعة في أنظمة إنذار وصيانة أجهزة الحريق. واجهت في المواقع التحديات اليومية للحسابات اليدوية المعقدة، مما دفعني لتعلم برمجة تطبيقات الموبايل (Flutter).
-                </p>
-                <p>
-                    هدفي هو سد الفجوة بين النظريات الهندسية (الكود المصري & NFPA) والتطبيق العملي، من خلال أدوات رقمية دقيقة وسهلة الاستخدام لكل مهندس وفني.
-                </p>
-                <div class="highlight-box">
-                    "التكنولوجيا ليست بديلاً عن المهندس، بل هي الأداة التي تضاعف كفاءته."
-                </div>
-            </div>
+        <div class="stat-item reveal">
+            <h3>01</h3>
+            <p>تطبيق مشرف إنذار ذكي</p>
+        </div>
+        <div class="stat-item reveal">
+            <h3>24/7</h3>
+            <p>عمل بدون إنترنت (Offline)</p>
         </div>
     </div>
 
-    <div class="container" id="apps">
-        <div class="section-header">
-            <h2 class="section-title">معرض التطبيقات الهندسية</h2>
-            <p style="font-size: 1.2rem; color: var(--text-gray); margin-top: 10px;">أدوات تم تطويرها من واقع الخبرة العملية</p>
-        </div>
-        
-        <div class="projects-grid">
+    <section class="section-padding" id="apps">
+        <h2 style="font-size: 3rem; text-align: center; margin-bottom: 4rem;">المشاريع البرمجية</h2>
+        <div class="grid">
             
-            <div class="project-card">
-                <div class="project-img-wrapper">
-                    <img src="image_4.png" alt="أيقونة التطبيق" class="project-img">
+            <div class="card reveal" onclick="location.href='#details'">
+                <div class="card-icon"><i class="fas fa-fire-extinguisher"></i></div>
+                <h3>المصمم الهندسي (FM200)</h3>
+                <p>حسابات الغاز وفقاً لـ NFPA 2001 والكود المصري. يعالج المعادلات المعقدة في ثوانٍ.</p>
+                <div class="logic-box">
+                    // معادلة حساب وزن الغاز<br>
+                    W = (V/s) * (c/(100-c))
                 </div>
-                <div class="project-content">
-                    <h3>المصمم الهندسي (FM200 & CO2)</h3>
-                    <div class="project-tags">
-                        <span class="tag">Flutter</span>
-                        <span class="tag">كود مصري</span>
-                        <span class="tag">PDF</span>
-                    </div>
-                    <p>الأداة الأولى لحسابات الغاز وتوزيع الكواشف بنظام المناطق (Cross-Zoning) آلياً وفقاً للأكواد المعتمدة.</p>
-                    <a href="#smart-gas-details" class="btn-action" style="width: 100%; text-align: center; margin-top: 20px;">عرض الصور والتحميل</a>
-                </div>
+                <a href="رابط_التحميل" style="color: var(--accent); font-weight: 700;">تحميل APK →</a>
             </div>
 
-            <div class="project-card" style="opacity: 0.7; border: 2px dashed #ddd; background: transparent; box-shadow: none;">
-                <div class="project-img-wrapper" style="background: transparent;">
-                   <i class="fas fa-rocket" style="font-size: 5rem; color: #ddd;"></i>
+            <div class="card reveal">
+                <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                <h3>أداة مشرف الصيانة</h3>
+                <p>تطبيق لإدارة كشوف الصيانة الدورية واكتشاف أعطال اللوحات Addressable.</p>
+                <div class="logic-box">
+                    // نظام التقرير التلقائي<br>
+                    generatePDF(reportData);
                 </div>
-                <div class="project-content">
-                    <h3 style="color: #999;">مشروع قادم...</h3>
-                    <p>تجري حالياً برمجة أدوات جديدة لخدمة فنيي الصيانة.</p>
-                </div>
+                <span style="color: #64748b;">قيد التطوير الفني</span>
             </div>
 
         </div>
-    </div>
+    </section>
 
-    <div id="smart-gas-details" class="app-details-section">
-        <div class="section-header">
-            <h2 class="section-title" style="font-size: 2rem;">جولة داخل تطبيق "المصمم الهندسي"</h2>
-            <p style="max-width: 700px; margin: 20px auto 0; color: var(--text-gray);">
-                شاهد كيف يتحول الإدخال البسيط لأبعاد الغرفة إلى مخطط هندسي وتقرير احترافي جاهز للطباعة، كل هذا بدون إنترنت.
+    <section class="section-padding" id="about" style="background: rgba(255,255,255,0.01);">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;" class="reveal">
+            <h2 style="font-size: 2.5rem;">لماذا أجمع بين الهندسة والبرمجة؟</h2>
+            <p style="font-size: 1.2rem; line-height: 2; color: #94a3b8;">
+                بصفتي مشرف عمليات وأنظمة حريق، أدركت أن الخطأ في الحسابات اليدوية قد يكلف الكثير. لذا صممت أدواتي (باستخدام Flutter) لتكون المساعد الرقمي الذي يضمن الدقة بنسبة 100% في أصعب المواقع الإنشائية.
             </p>
         </div>
+    </section>
 
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="image_5.png" alt="شاشة الإدخال">
-                <p>1. واجهة الإدخال المباشرة</p>
-            </div>
-            <div class="gallery-item">
-                <img src="image_7.png" alt="إعدادات التقرير">
-                <p>2. تخصيص بياناتك كمهندس</p>
-            </div>
-            <div class="gallery-item">
-                <img src="image_6.png" alt="المخطط الهندسي">
-                <p>3. المخطط وتوزيع المناطق</p>
-            </div>
-            <div class="gallery-item">
-                <img src="image_2.png" alt="تقرير PDF النهائي" style="height: 300px; object-fit: contain; background: #eee;">
-                <p>4. المخرج النهائي (تقرير PDF)</p>
-            </div>
+    <footer id="contact">
+        <h2 style="margin-bottom: 1rem;">دعنا نبني نظاماً آمناً</h2>
+        <p>م. أحمد عبد العليم | مشرف إنذار وصيانة أجهزة إنذار الحريق</p>
+        <p style="color: var(--accent); font-size: 1.5rem; font-weight: 800;">01011508884</p>
+        <div style="margin-top: 2rem;">
+            <a href="mailto:mr.ahmedabdelalim@gmail.com" style="color: white; margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+            <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
         </div>
-
-        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 2px dashed #eee;">
-            <h3 style="color: var(--primary-blue); margin-bottom: 20px;">جاهز لتجربة التطبيق في موقع عملك؟</h3>
-            <a href="https://drive.google.com/file/d/183sqWBBn3mPzQzGnJqXZZ6g81NDN9bXb/view?usp=drive_link" class="btn-action" style="font-size: 1.2rem; padding: 15px 50px;">
-                <i class="fas fa-download" style="margin-left: 10px;"></i> تحميل ملف APK المباشر
-            </a>
-            <br><br>
-            <a href="#apps" class="btn-action btn-outline">إغلاق التفاصيل والعودة</a>
-        </div>
-    </div>
-
-    <div class="container contact-section" id="contact">
-        <div class="section-header">
-            <h2 class="section-title">دعنا نتحدث هندسياً</h2>
-            <p style="font-size: 1.2rem; margin-top: 10px;">متاح للاستشارات الفنية أو تطوير نسخ مخصصة للشركات</p>
-        </div>
-        <div class="contact-box">
-            <div class="info-card">
-                <i class="fas fa-phone-alt"></i>
-                <strong>اتصل بي مباشرة</strong>
-                01011508884
-            </div>
-            <div class="info-card">
-                <i class="fas fa-envelope"></i>
-                <strong>البريد الإلكتروني</strong>
-                mr.ahmedabdelalim@gmail.com
-            </div>
-            <div class="info-card">
-                <i class="fas fa-hard-hat"></i>
-                <strong>المجال المهني</strong>
-                مشرف إنذار وصيانة أجهزة الحريق
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <strong>م. أحمد عبد العليم</strong>
-        <p style="margin-top: 10px; opacity: 0.8;">خبير أنظمة الإنذار ومطور حلول برمجية</p>
-        <p style="margin-top: 30px; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            جميع الحقوق محفوظة &copy; 2026
-        </p>
+        <p style="margin-top: 4rem; opacity: 0.3; font-size: 0.8rem;">&copy; 2026 جميع الحقوق محفوظة لمهندسي السلامة</p>
     </footer>
 
+    <script>
+        // أنيماشن التمرير
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // للتشغيل عند التحميل
+    </script>
 </body>
 </html>
