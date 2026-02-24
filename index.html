@@ -105,15 +105,15 @@
         }
 
         .about-image img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
+            width: 220px;
+            height: 220px;
+            border-radius: 30px; /* جعلتها مربعة بحواف دائرية لتناسب الأيقونة */
             object-fit: cover;
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            border: 5px solid var(--primary-red);
+            border: 3px solid var(--primary-red);
         }
 
-        /* App Showcase */
+        /* App Main Section */
         .app-section {
             padding: 60px 5%;
             display: flex;
@@ -122,28 +122,33 @@
             gap: 40px;
         }
 
-        .app-images {
+        .app-main-images {
             flex: 1;
             min-width: 300px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 30px;
             align-items: center;
         }
 
-        .app-images img {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .main-icon-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .app-icon-img {
-            width: 150px;
-            height: 150px;
+        .report-container {
+            text-align: center;
+            width: 100%;
         }
-
+        
         .report-img {
-            border: 1px solid #ddd;
+            width: 90%;
+            max-width: 400px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         .app-info {
@@ -155,11 +160,6 @@
             color: var(--navy-blue);
             font-size: 2rem;
             margin-bottom: 15px;
-        }
-
-        .features-list {
-            list-style: none;
-            padding: 0;
         }
 
         .features-list li {
@@ -194,9 +194,55 @@
             box-shadow: 0 5px 15px rgba(183, 28, 28, 0.4);
         }
 
+        /* App Screenshots Gallery Section (جديد) */
+        .app-gallery-section {
+            padding: 40px 5%;
+            background-color: white;
+            text-align: center;
+        }
+
+        .app-gallery-section h3 {
+            color: var(--navy-blue);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .screenshots-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .screenshot-box {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            text-align: center;
+        }
+
+        .screenshot-box img {
+            width: 100%;
+            border-radius: 15px;
+            border: 3px solid #eee;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .screenshot-box img:hover {
+            transform: scale(1.03);
+            border-color: var(--primary-red);
+        }
+
+        .screenshot-box p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--navy-blue);
+        }
+
         /* Contact Section */
         .contact {
-            background-color: white;
+            background-color: var(--light-bg);
             padding: 60px 5%;
             text-align: center;
         }
@@ -204,7 +250,19 @@
         .contact h2 {
             color: var(--navy-blue);
             font-size: 2rem;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+        }
+
+        /* تنسيق صورة الترويسة في قسم التواصل */
+        .contact-header-image {
+            max-width: 100%;
+            width: 600px;
+            height: auto;
+            margin: 0 auto 40px auto;
+            display: block;
+            border-radius: 15px;
+            border: 2px solid var(--primary-red);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .contact-info {
@@ -216,7 +274,7 @@
         }
 
         .contact-card {
-            background: var(--light-bg);
+            background: white;
             padding: 30px;
             border-radius: 15px;
             width: 280px;
@@ -248,7 +306,8 @@
             .hero h1 { font-size: 2.2rem; }
             header { flex-direction: column; gap: 15px; }
             .about { flex-direction: column-reverse; text-align: center; }
-            .features-list li { justify-content: flex-start; }
+            .app-section { flex-direction: column; }
+            .app-main-images, .app-info { width: 100%; }
         }
     </style>
 </head>
@@ -259,6 +318,7 @@
         <nav>
             <a href="#about">عني</a>
             <a href="#app">التطبيق</a>
+            <a href="#gallery">جولة في التطبيق</a>
             <a href="#contact">تواصل معي</a>
         </nav>
     </header>
@@ -270,7 +330,7 @@
 
     <section class="about" id="about">
         <div class="about-image">
-            <img src="image_4.png" alt="م. أحمد عبد العليم">
+            <img src="image_4.png" alt="أيقونة المصمم الهندسي">
         </div>
         <div class="about-content">
             <h2>من أنا؟</h2>
@@ -281,10 +341,13 @@
     </section>
 
     <section class="app-section" id="app">
-        <div class="app-images">
-            <img src="image_4.png" alt="أيقونة تطبيق المصمم الهندسي" class="app-icon-img">
-            <img src="image_2.png" alt="نموذج تقرير التطبيق" class="report-img">
-            <p style="text-align: center; font-size: 0.9rem; color: #666;">نموذج لتقرير حسابات FM200 وتوزيع الكواشف</p>
+        <div class="app-main-images">
+            <img src="image_4.png" alt="أيقونة التطبيق" class="main-icon-img">
+            
+            <div class="report-container">
+                <img src="image_2.png" alt="نموذج تقرير التطبيق" class="report-img">
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">مخرجات التطبيق: تقرير PDF احترافي</p>
+            </div>
         </div>
         <div class="app-info">
             <h2>المصمم الهندسي لأنظمة الإطفاء</h2>
@@ -293,15 +356,36 @@
                 <li>حسابات دقيقة وفورية لغازات الإطفاء (FM200 و CO2).</li>
                 <li>توزيع هندسي آلي للكواشف والفوهات بنظام المناطق (Cross-Zoning).</li>
                 <li>استخراج تقارير PDF احترافية تحمل بياناتك كمهندس مصمم.</li>
+                <li>إمكانية تخصيص ترويسة التقرير بالكامل (اسمك، شركتك، شعارك).</li>
                 <li>يعمل بكفاءة تامة بدون الحاجة لاتصال بالإنترنت (Offline).</li>
-                <li>واجهة سهلة الاستخدام مصممة خصيصاً للمهندسين في الموقع.</li>
             </ul>
             <a href="#" class="btn-download">تحميل التطبيق الآن (APK)</a>
         </div>
     </section>
 
+    <section class="app-gallery-section" id="gallery">
+        <h3>جولة داخل التطبيق</h3>
+        <div class="screenshots-container">
+            <div class="screenshot-box">
+                <img src="image_5.png" alt="واجهة الإدخال الرئيسية">
+                <p>1. واجهة الإدخال وبصمة المطور</p>
+            </div>
+            <div class="screenshot-box">
+                <img src="image_7.png" alt="شاشة تخصيص التقرير">
+                <p>2. تخصيص بيانات التقرير</p>
+            </div>
+            <div class="screenshot-box">
+                <img src="image_6.png" alt="شاشة النتائج والمخطط">
+                <p>3. النتائج والمخطط الهندسي</p>
+            </div>
+        </div>
+    </section>
+
     <section class="contact" id="contact">
         <h2>تواصل معي</h2>
+        
+        <img src="image_3.png" alt="بيانات التواصل م. أحمد عبد العليم" class="contact-header-image">
+
         <p>متاح للاستشارات الهندسية أو لطلب نسخ مخصصة من التطبيق.</p>
         <div class="contact-info">
             <div class="contact-card">
