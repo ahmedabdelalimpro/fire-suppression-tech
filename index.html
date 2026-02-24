@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>م. أحمد عبد العليم | خبير أنظمة الإنذار</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #b71c1c;
+            --navy-blue: #0d47a1;
+            --light-bg: #f5f5f5;
+            --text-dark: #333;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-red);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            margin-right: 20px;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-blue), #1565c0);
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 5%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-content {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .about h2 {
+            color: var(--navy-blue);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 5px solid var(--primary-red);
+        }
+
+        /* App Showcase */
+        .app-section {
+            padding: 60px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .app-images {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .app-images img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .app-icon-img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .report-img {
+            border: 1px solid #ddd;
+        }
+
+        .app-info {
+            flex: 1.5;
+            min-width: 300px;
+        }
+
+        .app-info h2 {
+            color: var(--navy-blue);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .features-list li::before {
+            content: '✔️';
+            margin-left: 10px;
+            color: var(--primary-red);
+        }
+
+        .btn-download {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(183, 28, 28, 0.4);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: var(--navy-blue);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 15px;
+            width: 280px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-red);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 30px 5%;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            header { flex-direction: column; gap: 15px; }
+            .about { flex-direction: column-reverse; text-align: center; }
+            .features-list li { justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">م. أحمد عبد العليم</div>
+        <nav>
+            <a href="#about">عني</a>
+            <a href="#app">التطبيق</a>
+            <a href="#contact">تواصل معي</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>أحمد عبد العليم</h1>
+        <p>مشرف إنذار وصيانة أجهزة إنذار الحريق | مطور حلول هندسية ذكية</p>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-image">
+            <img src="image_4.png" alt="م. أحمد عبد العليم">
+        </div>
+        <div class="about-content">
+            <h2>من أنا؟</h2>
+            <p>
+                مهندس متخصص ومشرف بخبرة ميدانية واسعة في أنظمة إنذار وصيانة أجهزة الحريق. شغفي لا يتوقف عند الإشراف والتنفيذ، بل يمتد إلى تطويع التكنولوجيا لخدمة هذا المجال الحيوي. أعمل على تطوير تطبيقات هندسية مبتكرة (باستخدام Flutter) تهدف إلى تبسيط الحسابات المعقدة وتوفير الوقت والجهد للمهندسين والفنيين في مواقع العمل، مع الالتزام الصارم بالأكواد الهندسية المعتمدة.
+            </p>
+        </div>
+    </section>
+
+    <section class="app-section" id="app">
+        <div class="app-images">
+            <img src="image_4.png" alt="أيقونة تطبيق المصمم الهندسي" class="app-icon-img">
+            <img src="image_2.png" alt="نموذج تقرير التطبيق" class="report-img">
+            <p style="text-align: center; font-size: 0.9rem; color: #666;">نموذج لتقرير حسابات FM200 وتوزيع الكواشف</p>
+        </div>
+        <div class="app-info">
+            <h2>المصمم الهندسي لأنظمة الإطفاء</h2>
+            <p class="lead">الأداة المتكاملة في جيبك لحسابات الغاز وتصميم الأنظمة وفقاً للكود المصري و NFPA.</p>
+            <ul class="features-list">
+                <li>حسابات دقيقة وفورية لغازات الإطفاء (FM200 و CO2).</li>
+                <li>توزيع هندسي آلي للكواشف والفوهات بنظام المناطق (Cross-Zoning).</li>
+                <li>استخراج تقارير PDF احترافية تحمل بياناتك كمهندس مصمم.</li>
+                <li>يعمل بكفاءة تامة بدون الحاجة لاتصال بالإنترنت (Offline).</li>
+                <li>واجهة سهلة الاستخدام مصممة خصيصاً للمهندسين في الموقع.</li>
+            </ul>
+            <a href="#" class="btn-download">تحميل التطبيق الآن (APK)</a>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>تواصل معي</h2>
+        <p>متاح للاستشارات الهندسية أو لطلب نسخ مخصصة من التطبيق.</p>
+        <div class="contact-info">
+            <div class="contact-card">
+                <strong>الهاتف</strong>
+                01011508884
+            </div>
+            <div class="contact-card">
+                <strong>البريد الإلكتروني</strong>
+                mr.ahmedabdelalim@gmail.com
+            </div>
+            <div class="contact-card">
+                <strong>المسمى الوظيفي</strong>
+                مشرف إنذار وصيانة أجهزة إنذار الحريق
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 م. أحمد عبد العليم</p>
+        <p>مشرف إنذار وصيانة أجهزة إنذار الحريق</p>
+    </footer>
+
+</body>
+</html>
